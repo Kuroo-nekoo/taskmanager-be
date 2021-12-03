@@ -1,7 +1,8 @@
-import { CreateCategoryDto } from './dtos/create-category.dto';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Category } from 'src/categories/entities/category.entity';
 import { Injectable } from '@nestjs/common';
-import { Category } from './entities/category.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -11,13 +12,25 @@ export class CategoriesService {
     private categoriesRepository: Repository<Category>,
   ) {}
 
-  getCategories() {
-    return this.categoriesRepository.find();
-  }
-
-  createCategory(createCategoryDto: CreateCategoryDto) {
+  create(createCategoryDto: CreateCategoryDto) {
     return this.categoriesRepository.save(
       this.categoriesRepository.create(createCategoryDto),
     );
+  }
+
+  findAll() {
+    return this.categoriesRepository.find({ relations: ['tasks'] });
+  }
+
+  findOne(id: number) {
+    return `This action returns a #${id} category`;
+  }
+
+  update(id: number, updateCategoryDto: UpdateCategoryDto) {
+    return this.categoriesRepository.update({ id }, updateCategoryDto);
+  }
+
+  remove(id: number) {
+    return this.categoriesRepository.delete({ id });
   }
 }
