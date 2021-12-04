@@ -10,7 +10,10 @@ export class Category {
   value: string;
 
   @Column()
-  listId: number;
+  color: string;
+
+  // @Column()
+  // listId: number;
 
   @OneToMany(() => Task, (task) => task.category)
   tasks: Task[];

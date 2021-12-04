@@ -26,7 +26,7 @@ export class TasksService {
   }
 
   update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+    return this.tasksRepository.update(id, updateTaskDto);
   }
 
   remove(id: number) {
