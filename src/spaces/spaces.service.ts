@@ -30,6 +30,6 @@ export class SpacesService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} space`;
+    return this.spacesRepository.delete(id);
   }
 }

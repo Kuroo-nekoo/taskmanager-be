@@ -7,6 +7,7 @@ import { CategoriesController } from './categories/categories.controller';
 import { CategoriesModule } from './categories/categories.module';
 import { TasksModule } from './tasks/tasks.module';
 import { ListsModule } from './lists/lists.module';
+import { SpacesModule } from './spaces/spaces.module';
 
 interface EnvironmentVariables {
   DATABASE_HOST: string;
@@ -40,6 +41,7 @@ interface EnvironmentVariables {
     TasksModule,
     CategoriesModule,
     ListsModule,
+    SpacesModule,
   ],
   controllers: [],
   providers: [],

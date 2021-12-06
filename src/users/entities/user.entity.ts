@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class User {
@@ -10,4 +10,7 @@ export class User {
 
   @Column()
   password: string;
+
+  // @OneToMany(() => Space, (space) => space.user)
+  // spaces: Space[];
 }
