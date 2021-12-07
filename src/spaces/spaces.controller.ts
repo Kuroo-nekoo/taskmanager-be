@@ -32,8 +32,11 @@ export class SpacesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSpaceDto: UpdateSpaceDto) {
-    return this.spacesService.update(+id, updateSpaceDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateSpaceDto: UpdateSpaceDto,
+  ) {
+    return this.spacesService.update(id, updateSpaceDto);
   }
 
   @Delete(':id')

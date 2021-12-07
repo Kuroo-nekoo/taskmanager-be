@@ -26,7 +26,7 @@ export class SpacesService {
   }
 
   update(id: number, updateSpaceDto: UpdateSpaceDto) {
-    return `This action updates a #${id} space`;
+    return this.spacesRepository.update(id, updateSpaceDto);
   }
 
   remove(id: number) {

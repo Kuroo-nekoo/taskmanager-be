@@ -22,6 +22,10 @@ export class CategoriesService {
     return this.categoriesRepository.find({ relations: ['tasks'] });
   }
 
+  findAllByListId(listId: number) {
+    return this.categoriesRepository.find({ where: { listId } });
+  }
+
   findOne(id: number) {
     return `This action returns a #${id} category`;
   }
