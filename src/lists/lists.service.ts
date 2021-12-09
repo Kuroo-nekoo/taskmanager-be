@@ -12,6 +12,7 @@ export class ListsService {
   ) {}
 
   create(createListDto: CreateListDto) {
+    console.log(createListDto);
     return this.listsRepository.save(
       this.listsRepository.create(createListDto),
     );
@@ -29,7 +30,7 @@ export class ListsService {
     return `This action updates a #${id} list`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} list`;
+  remove(id: string) {
+    return this.listsRepository.delete(id);
   }
 }

@@ -6,7 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  ParseIntPipe,
 } from '@nestjs/common';
 import { SpacesService } from './spaces.service';
 import { CreateSpaceDto } from './dto/create-space.dto';
@@ -28,19 +27,16 @@ export class SpacesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.spacesService.findOne(+id);
+    return this.spacesService.findOne(id);
   }
 
   @Patch(':id')
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updateSpaceDto: UpdateSpaceDto,
-  ) {
+  update(@Param('id') id: string, @Body() updateSpaceDto: UpdateSpaceDto) {
     return this.spacesService.update(id, updateSpaceDto);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
+  remove(@Param('id') id: string) {
     return this.spacesService.remove(id);
   }
 }

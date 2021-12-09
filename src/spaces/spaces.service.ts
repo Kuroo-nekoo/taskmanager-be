@@ -21,15 +21,15 @@ export class SpacesService {
     return this.spacesRepository.find({ relations: ['lists'] });
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} space`;
   }
 
-  update(id: number, updateSpaceDto: UpdateSpaceDto) {
+  update(id: string, updateSpaceDto: UpdateSpaceDto) {
     return this.spacesRepository.update(id, updateSpaceDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.spacesRepository.delete(id);
   }
 }

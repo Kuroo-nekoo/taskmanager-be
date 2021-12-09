@@ -10,13 +10,18 @@ import {
 
 @Entity()
 export class List {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   value: string;
 
-  @OneToMany(() => Category, (category) => category.list)
+  @Column()
+  spaceId: number;
+
+  @OneToMany(() => Category, (category) => category.list, {
+    onDelete: 'CASCADE',
+  })
   categories: Category[];
 
   @ManyToOne(() => Space, (space) => space.lists)

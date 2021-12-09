@@ -30,11 +30,11 @@ export class CategoriesService {
     return `This action returns a #${id} category`;
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
+  update(id: string, updateCategoryDto: UpdateCategoryDto) {
     return this.categoriesRepository.update({ id }, updateCategoryDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.categoriesRepository.delete({ id });
   }
 }

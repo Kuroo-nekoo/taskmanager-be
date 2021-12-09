@@ -10,8 +10,8 @@ import { List } from 'src/lists/entities/list.entity';
 
 @Entity()
 export class Category {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   value: string;
@@ -25,6 +25,6 @@ export class Category {
   @OneToMany(() => Task, (task) => task.category)
   tasks: Task[];
 
-  @ManyToOne(() => List, (list) => list.categories)
+  @ManyToOne(() => List, (list) => list.categories, { onDelete: 'CASCADE' })
   list: List;
 }

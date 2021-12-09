@@ -3,8 +3,8 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Task {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   value: string;
@@ -12,6 +12,8 @@ export class Task {
   @Column()
   categoryId: number;
 
-  @ManyToOne(() => Category, (category) => category.tasks)
+  @ManyToOne(() => Category, (category) => category.tasks, {
+    onDelete: 'CASCADE',
+  })
   category: Category;
 }
