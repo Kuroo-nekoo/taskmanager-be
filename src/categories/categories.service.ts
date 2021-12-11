@@ -26,8 +26,8 @@ export class CategoriesService {
     return this.categoriesRepository.find({ where: { listId } });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
+  async findOne(id: string) {
+    return this.categoriesRepository.findOne({ id }, { relations: ['tasks'] });
   }
 
   update(id: string, updateCategoryDto: UpdateCategoryDto) {

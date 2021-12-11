@@ -12,18 +12,20 @@ export class ListsService {
   ) {}
 
   create(createListDto: CreateListDto) {
-    console.log(createListDto);
     return this.listsRepository.save(
       this.listsRepository.create(createListDto),
     );
   }
 
   findAll() {
-    return this.listsRepository.find();
+    return this.listsRepository.find({ relations: ['categories'] });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} list`;
+  findOne(id: string) {
+    return this.listsRepository.findOne(
+      { id },
+      { relations: ['categories', 'categories.tasks'] },
+    );
   }
 
   update(id: number, updateListDto: UpdateListDto) {

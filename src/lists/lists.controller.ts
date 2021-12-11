@@ -27,7 +27,7 @@ export class ListsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.listsService.findOne(+id);
+    return this.listsService.findOne(id);
   }
 
   @Patch(':id')

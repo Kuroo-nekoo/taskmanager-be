@@ -18,11 +18,18 @@ export class SpacesService {
   }
 
   findAll() {
-    return this.spacesRepository.find({ relations: ['lists'] });
+    return this.spacesRepository.find({
+      relations: ['lists', 'lists.categories', 'lists.categories.tasks'],
+    });
   }
 
   findOne(id: string) {
-    return `This action returns a #${id} space`;
+    return this.spacesRepository.findOne(
+      { id },
+      {
+        relations: ['lists', 'lists.categories', 'lists.categories.tasks'],
+      },
+    );
   }
 
   update(id: string, updateSpaceDto: UpdateSpaceDto) {
